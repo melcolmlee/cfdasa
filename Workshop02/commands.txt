@@ -28,3 +28,5 @@ kubectl exec -ti mydb-pod -n myspace bash
 kubectl delete -f pod.yaml
 
 kubectl port-forward pod/mydb-pod 8080:300 -n myspace
+
+kubectl get po,rs,deploy,svc -n myspace
