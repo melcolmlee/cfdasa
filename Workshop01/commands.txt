@@ -1,0 +1,22 @@
+#login to pull image
+docker login
+
+#pull image 
+docker pull stackissup/northwind-db:v1
+
+#create a network
+docker network create mynet -d bridge
+docker inspect mynet
+
+#create a volume
+docker volume create myvol
+docker inspect myvol
+
+#deploy the image pulled 
+docker run -d --volume myvol:/var/lib/mysql --network mynet --name mydb stackupiss/northwind-db:v1
+
+# build the myapp image
+docker build -t melcolmlee/myapp:v1 .
+
+#deploy the myapp image 
+docker run -d -p 80:3000 --network mynet --name myapp melcolmlee/myapp:1
