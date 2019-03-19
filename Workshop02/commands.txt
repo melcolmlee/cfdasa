@@ -1,0 +1,30 @@
+
+mkdir ./bin
+
+#get kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl
+
+#Make the kubectl binary executable
+chmod +x ./kubectl
+
+#Download cluster config file (.yaml) and put in bin
+
+#set kubectl path
+export PATH=$HOME/bin:$PATH
+
+#query cluster info using yaml config file
+kubectl cluster-info --kubeconfig /Users/melcolmlee/bin/mycluster-kubeconfig.yaml
+
+#set kubectl config
+export KUBECONFIG="/Users/melcolmlee/bin/mycluster-kubeconfig.yaml"
+
+#
+kubectl apply -f namespace.yaml
+
+kubectl get pods -n myspace
+
+kubectl exec -ti mydb-pod -n myspace bash
+
+kubectl delete -f pod.yaml
+
+kubectl port-forward pod/mydb-pod 8080:300 -n myspace
