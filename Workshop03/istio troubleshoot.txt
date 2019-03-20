@@ -1,0 +1,10 @@
+1. check your istio installtion
+istio version
+kubectl get pods -n istio-system
+2. Check your logs of pods themself,,, to see if they receive any traffic
+3. check the service (ks8)
+4. check your pod is running under ur deployment
+5. check the gateway & its hosts , ports
+6. check the route rule (Virtual service, see if they have gateway bound to it) , check its hosts..
+go to route rules
+Destination rule
