@@ -1,0 +1,38 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: istiodemovs1
+  namespace: default
+spec:
+  hosts:
+  - "istiodemo.68.183.247.101.nip.io"
+  gateways:
+  - istiodemo-ingress
+  http:
+  - match:
+    - uri:
+        exact: /v1/hello
+    rewrite:
+      uri: /hello
+    route:
+    - destination:
+        host: istiodemosvc
+        subset: version-1
+  - match:
+    - uri:
+        exact: /v2/hello
+    rewrite:
+      uri: /hello
+    route:
+    - destination:
+        host: istiodemosvc
+        subset: version-2
+  - match:
+    - uri:
+        exact: /v3
+    rewrite:
+      uri: /topstories
+    route:
+    - destination:
+        host: istiodemosvc
+        subset: version-3

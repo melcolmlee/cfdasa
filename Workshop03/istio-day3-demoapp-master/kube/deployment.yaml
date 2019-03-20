@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: istiodemo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: istiodemo
+        version: v1
+    spec:
+      containers:
+      - name: istiodemo-container
+        image: melcolmlee/istiodemo:v1
+        imagePullPolicy: Always
+        env:
+          - name: SERVICE_VERSION
+            value: v1
+        ports:
+          - containerPort: 6000
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: istiodemo2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: istiodemo2
+        version: v1
+    spec:
+      containers:
+      - name: istiodemo-container
+        image: balanus/demopythonapp
+        imagePullPolicy: Always
+        env:
+          - name: SERVICE_VERSION
+            value: v1
+        ports:
+          - containerPort: 6000
