@@ -1,0 +1,5 @@
+1. Get the application URL by running these commands:
+
+You can access this application using port-forward locally. 
+BECAUSE SEFVICE IS NOT EXPOSED TO PUBLIC
+#ClusterIP

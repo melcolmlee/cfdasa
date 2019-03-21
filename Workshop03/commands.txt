@@ -1,2 +1,3 @@
 kubectl apply -f <(istioctl kube-inject -f deployment.yaml)
 
+kubectl get gateway.networking.istio.io

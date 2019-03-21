@@ -1,0 +1,11 @@
+helm repo update
+
+helm install stable/mysql --name warehouse
+
+helm delete warehouse --purge 
+
+helm create helloworld
+
+helm upgrade mysimeplepod ./helloworld
+
+helm upgrade v1 weatherapp
